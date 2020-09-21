@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-// import { firebaseAuth } from "./ui-config/firebase";
 import Snackbar from "./ui-containers/SnackBar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {mapDispatchToProps} from "./ui-utils/commons";
@@ -11,32 +10,10 @@ import "./App.css";
 
 
 class App extends React.Component {
-  // // Listen to the Firebase Auth state and set the local state.
-  // componentDidMount() {
-  //   const { history} = this.props;
-  //   this.unregisterAuthObserver = firebaseAuth().onAuthStateChanged(user => {
-  //     if (user) {
-  //       // history.push("/user-home/first-time");
-  //       history.push("/user-home");
-  //     } else {
-  //       history.push("/");
-  //     }
-  //   });
-  // }
 
-  // Make sure we un-register Firebase observers when the component unmounts.
-  // componentWillUnmount() {
-  //   this.unregisterAuthObserver();
-  // }
   componentDidMount= async()=>{
-    const {i18n,selectedLanguage, setAppData}=this.props;
+    const {i18n,selectedLanguage}=this.props;
     i18n.changeLanguage(selectedLanguage);
-    let appConfig = await fetch("https://raw.githubusercontent.com/muralim4242/mihy-repo/master/packages/mihy-config/covid19/app-configuration.json?timestamp="+new Date().getTime())
-      .then(function(response) {
-        return response.json();
-      })
-      .catch(error => console.error(error));
-    setAppData("appConfig",appConfig)
   }
 
   render() {
